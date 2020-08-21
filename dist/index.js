@@ -1,10 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var error_if_not_array_1 = require("error-if-not-array");
-function alphabetize(strings) {
-    error_if_not_array_1.errorIfNotArray(strings);
-    strings.sort(function (a, b) {
-        return String(a).localeCompare(String(b), 'en', { caseFirst: 'upper' });
-    });
+import { getArrayCopy } from '@writetome51/get-array-copy';
+// Repeated tests show Array.sort((a, b) => a < b ? -1 : 1) is faster than quicksort for 
+// alphabetical sorting.
+export function getAlphabetized(array, getValueToSortBy = (element) => element) {
+    let arr = getArrayCopy(array);
+    if (arr.length < 2)
+        return arr;
+    // '<' operator compares the strings' unicode values.
+    arr.sort((a, b) => getValueToSortBy(a) < getValueToSortBy(b) ? -1 : 1);
+    return arr;
 }
-exports.alphabetize = alphabetize;

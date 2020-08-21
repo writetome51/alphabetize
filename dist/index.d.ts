@@ -1,1 +1,4 @@
-export declare function alphabetize(strings: string[]): void;
+export declare function getAlphabetized(
+	array: any[],
+	getValueToSortBy?: (element: any) => any
+): any[];

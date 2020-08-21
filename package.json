@@ -1,7 +1,8 @@
 {
-  "name": "@writetome51/alphabetize",
-  "version": "1.0.6",
-  "description": "Function orders an array of strings alphabetically",
+  "name": "@writetome51/get-alphabetized",
+  "version": "1.0.0",
+  "description": "Function orders an array alphabetically.  Optional callback allows you to choose what value in each element to sort by",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -9,13 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/writetome51/alphabetize.git"
+    "url": "git+https://github.com/writetome51/get-alphabetized.git"
   },
   "keywords": [
     "string",
     "strings",
     "sorting",
     "alphabetize",
+    "alphabetical",
+    "order",
     "english",
     "alphabet",
     "function"
@@ -23,10 +26,11 @@
   "author": "Steve Thompson",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/writetome51/alphabetize/issues"
+    "url": "https://github.com/writetome51/get-alphabetized/issues"
   },
-  "homepage": "https://github.com/writetome51/alphabetize#readme",
+  "homepage": "https://github.com/writetome51/get-alphabetized#readme",
   "dependencies": {
+    "@writetome51/get-array-copy": "^1.0.0",
     "error-if-not-array": "~1.0.0"
   }
 }
