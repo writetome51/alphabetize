@@ -17,7 +17,7 @@ export function getModifiedArrayCopy(
 export function alphabetizeCaseSensitive(arr, getValueToSortBy) {
 	// First sort so all uppercase letters appear before any lowercase:
 	arr.sort((a, b) => String(getValueToSortBy(a)) < String(getValueToSortBy(b)) ? -1 : 1);
-	arr.sort(getCaseInsensitiveComparator(getValueToSortBy));
+	alphabetizeCaseInsensitive(arr, getValueToSortBy);
 }
 
 
