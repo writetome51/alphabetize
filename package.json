@@ -1,7 +1,7 @@
 {
   "name": "@writetome51/get-alphabetized",
   "version": "1.0.0",
-  "description": "Function orders an array alphabetically.  Optional callback allows you to choose what value in each element to sort by",
+  "description": "Orders an array alphabetically.  Optional callback allows you to choose what value in each element to sort by",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

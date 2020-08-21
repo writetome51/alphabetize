@@ -1,7 +1,5 @@
 import { getArrayCopy } from '@writetome51/get-array-copy';
-export function getModifiedArrayCopy(array, 
-// operates on the array copy:
-modifyCopy) {
+export function getModifiedArrayCopy(array, modifyCopy) {
     let copy = getArrayCopy(array);
     if (copy.length < 2)
         return copy;

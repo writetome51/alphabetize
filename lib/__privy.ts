@@ -3,7 +3,6 @@ import { getArrayCopy } from '@writetome51/get-array-copy';
 
 export function getModifiedArrayCopy(
 	array: any[],
-	// operates on the array copy:
 	modifyCopy: (copy) => void
 ): any[] {
 	let copy = getArrayCopy(array);
