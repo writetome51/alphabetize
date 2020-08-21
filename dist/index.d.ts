@@ -1,10 +1,10 @@
-export declare function getAlphabetized(
-	array: any[],
+export declare function alphabetize(
+	arr: any[],
 	getValueToSortBy?: (element: any) => any
-): any[];
+): void;
 
 
-export declare function getAlphabetized_caseSensitive(
-	array: any[],
+export declare function alphabetizeInsensitive(
+	arr: any[],
 	getValueToSortBy?: (element: any) => any
-): any[];
+): void;

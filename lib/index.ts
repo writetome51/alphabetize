@@ -1,21 +1,16 @@
-import { alphabetizeCaseInsensitive, alphabetizeCaseSensitive, getModifiedArrayCopy } from './__privy';
-
-// Repeated tests show Array.sort((a, b) => a < b ? -1 : 1) is faster than quicksort for 
-// alphabetical sorting.
-
-export function getAlphabetized(
-	array: any[],
-	getValueToSortBy = (element) => element
-): any[] {
-	return getModifiedArrayCopy(array, (copy) => alphabetizeCaseInsensitive(copy, getValueToSortBy));
-}
+import { getCaseInsensitiveComparator, getCaseSensitiveComparator } from './__privy';
 
 
 // Uppercase letters are ordered before their lowercase versions, i.e., ['A','a','AA','aa']
 
-export function getAlphabetized_caseSensitive(
-	array: any[],
-	getValueToSortBy = (element) => element
-): any[] {
-	return getModifiedArrayCopy(array, (copy) => alphabetizeCaseSensitive(copy, getValueToSortBy));
+export function alphabetize(arr, getValueToSortBy = (element) => element): void {
+	// First sort so all uppercase letters appear before any lowercase:
+	arr.sort(getCaseSensitiveComparator(getValueToSortBy));
+
+	alphabetizeInsensitive(arr, getValueToSortBy);
+}
+
+
+export function alphabetizeInsensitive(arr, getValueToSortBy = (element) => element): void {
+	arr.sort(getCaseInsensitiveComparator(getValueToSortBy));
 }

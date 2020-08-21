@@ -1,33 +1,21 @@
-import { getArrayCopy } from '@writetome51/get-array-copy';
-
-
-export function getModifiedArrayCopy(
-	array: any[],
-	modifyCopy: (copy) => void
-): any[] {
-	let copy = getArrayCopy(array);
-	if (copy.length < 2) return copy;
-
-	modifyCopy(copy);
-	return copy;
-}
-
-
-export function alphabetizeCaseSensitive(arr, getValueToSortBy) {
-	// First sort so all uppercase letters appear before any lowercase:
-	arr.sort((a, b) => String(getValueToSortBy(a)) < String(getValueToSortBy(b)) ? -1 : 1);
-	alphabetizeCaseInsensitive(arr, getValueToSortBy);
-}
-
-
-export function alphabetizeCaseInsensitive(arr, getValueToSortBy) {
-	arr.sort(getCaseInsensitiveComparator(getValueToSortBy));
-}
+// Repeated tests show Array.sort((a, b) => a < b ? -1 : 1) is faster than quicksort algorithms for
+// alphabetical sorting.
 
 
 export function getCaseInsensitiveComparator(getValueToSortBy) {
-	return (a, b) => {
-		return (String(getValueToSortBy(a)).toLowerCase()
-		< String(getValueToSortBy(b)).toLowerCase() ? -1 : 1);
-	};
+	return getComparator(
+		(a, b) => String(getValueToSortBy(a)).toLowerCase() < String(getValueToSortBy(b)).toLowerCase()
+	);
+}
+
+
+export function getCaseSensitiveComparator(getValueToSortBy) {
+	return getComparator(
+		(a, b) => String(getValueToSortBy(a)) < String(getValueToSortBy(b))
+	);
+}
+
+
+export function getComparator(getBoolExpression: (a, b) => boolean) {
+	return (a, b) => (getBoolExpression(a, b) ? -1 : 1);
 }

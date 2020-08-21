@@ -1,11 +1,12 @@
-# getAlphabetized(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr: Array&lt;T&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getValueToSortBy? = (element) => element<br>): Array&lt;T&gt;
- 
-
-# getAlphabetized_caseSensitive(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr: Array&lt;T&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getValueToSortBy? = (element) => element<br>): Array&lt;T&gt;
+# alphabetize(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr: any[],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getValueToSortBy? = (element) => element<br>): void
 
 Orders uppercase letters before their lowercase versions, i.e., `['A','a','AA','aa']`
 
-Both functions return new copy of `arr` in ascending alphabetical order.  
+# alphabetizeInsensitive(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr: any[],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getValueToSortBy? = (element) => element<br>): void
+
+Orders without giving uppercase letters priority.
+
+Both functions re-order `arr` in ascending alphabetical order.  
 They sort using Array.prototype.sort() with this comparison function:  
 `(a, b) => String(getValueToSortBy(a)) < String(getValueToSortBy(b)) ? -1 : 1`  
 Optional callback `getValueToSortBy(element)` must return anything that  
@@ -15,38 +16,30 @@ returns the passed `element`.
 
 ## Examples
 ```js
-let strings = ['zxx', 'aAc', 'aac', 'aaa', 'ATC', 'bat', 'aab', 'bAt',
-'Aab', 'ZXX', 'Bat', 'At', 'zXX', 'aTC', 'za', 'ZA', 'qqq', 
-'atc', 'QQQ', 'qQQ', 'Zaa'];
+let arr = ['z', 'Z', 'zz', 'ZZ', 'a', 'A', 'aa', 'AA', 'c', 'C', '013',
+	'000', 0, '012', 1, 10, 11, '011', '001'];
 
-getAlphabetized_caseSensitive(strings);
+alphabetize(arr);
+console.log(arr);
+/*****************
+ [ 0, '000', '001', '011', '012', '013', 1, 10, 11,
+  'A', 'a', 'AA', 'aa', 'C', 'c', 'Z', 'z', 'ZZ', 'zz']
+*****************/
+
+ arr = ['z', 'Z', 'zz', 'ZZ', 'a', 'A', 'aa', 'AA', 'c', 'C', '013',
+	'000', 0, '012', 1, 10, 11, '011', '001'];
+alphabetizeInsensitive(arr);
+console.log(arr);
+/****************
+ [ 0, '000', '001', '011', '012', '013', 1, 10, 11,
+ 'a', 'A', 'aa', 'AA', 'c', 'C', 'z', 'Z', 'zz', 'ZZ']
+*****************/
+
+let objects = [{name: 'frank'}, {name: 'harry'}, {name: 'sheena'},
+	           {name: 'brett'}, {name: 'sam'}];
+alphabetize(objects, (obj) => obj.name);
+console.log(objects);
 /************
- Returns:
- [
-    'aaa', 'Aab', 'aab', 'aAc', 'aac', 'At',  'ATC', 'aTC',
-    'atc', 'Bat', 'bAt', 'bat', 'QQQ', 'qQQ', 'qqq', 'ZA',
-    'za',  'Zaa', 'ZXX', 'zXX', 'zxx'
- ]
-************/
-
-getAlphabetized(strings);
-/************
- Returns:
- [
-    'aaa', 'aab', 'Aab', 'aAc', 'aac', 'At',  'ATC', 'aTC',
-    'atc', 'bat', 'bAt', 'Bat', 'qqq', 'QQQ', 'qQQ', 'za',
-    'ZA',  'Zaa', 'zxx', 'ZXX', 'zXX'
- ]
-************/
-
-
-let objects = [
-    {name:'frank'}, {name:'harry'}, {name:'sheena'}, {name:'brett'}, {name: 'sam'}
-];
-
-getAlphabetized(objects, (obj) => obj.name);
-/************
- Returns:
  [
     { name: 'brett' },
     { name: 'frank' },
@@ -58,9 +51,9 @@ getAlphabetized(objects, (obj) => obj.name);
 ```
 
 ## Installation
-`npm i  @writetome51/get-alphabetized`
+`npm i  @writetome51/alphabetize`
 
 ## Loading
 ```js
-import {getAlphabetized} from '@writetome51/get-alphabetized';
+import {alphabetize, alphabetizeInsensitive} from '@writetome51/alphabetize';
 ```
