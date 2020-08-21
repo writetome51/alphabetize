@@ -6,6 +6,7 @@ Orders uppercase letters before their lowercase versions, i.e., `['A','a','AA','
 
 Orders without giving uppercase letters priority.
 
+
 Both functions re-order `arr` in ascending alphabetical order.  
 They sort using Array.prototype.sort() with this comparison function:  
 `(a, b) => String(getValueToSortBy(a)) < String(getValueToSortBy(b)) ? -1 : 1`  
