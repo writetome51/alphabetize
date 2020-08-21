@@ -1,14 +1,32 @@
-# getAlphabetized(arr: Array<T>, getValueToSortBy = (element) => element): Array<T>
+# getAlphabetized(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr: Array&lt;T&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getValueToSortBy? = (element) => element<br>): Array&lt;T&gt;
+ 
 
-Re-orders `strings` alphabetically.  
-If not every item in `strings` is type 'string', the function will attempt to  
-coerce the item into a string before doing the comparisons.  None of the  
-items are modified.
+# getAlphabetized_caseSensitive(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr: Array&lt;T&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getValueToSortBy? = (element) => element<br>): Array&lt;T&gt;
+
+Orders uppercase letters before their lowercase versions, i.e., `['A','a','AA','aa']`
+
+Both functions return new copy of `arr` in ascending alphabetical order.  
+They sort using Array.prototype.sort() with this comparison function:  
+`(a, b) => getValueToSortBy(a) < getValueToSortBy(b) ? -1 : 1`  
+Optional callback `getValueToSortBy(element)` must return anything that  
+can be alphabetically compared with other values. By default it simply  
+returns the passed `element`. 
 
 
-An example of result:
+## Examples
 ```js
-
+let objects = [{name:'frank'}, {name:'harry'}, {name:'sheena'}, {name:'brett'}, {name: 'sam'}];
+result = getAlphabetized(objects, (obj) => obj.name);
+/************
+ Returns:
+ [
+    { name: 'brett' },
+    { name: 'frank' },
+    { name: 'harry' },
+    { name: 'sam' },
+    { name: 'sheena' }
+]
+************/
 ```
 
 ## Installation
