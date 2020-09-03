@@ -1,6 +1,6 @@
 {
   "name": "@writetome51/alphabetize",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Orders an array alphabetically.  Optional callback allows you to choose what value in each element to sort by",
   "type": "module",
   "main": "dist/index.js",
@@ -36,5 +36,8 @@
     "@writetome51/get-array-copy": "^1.0.0",
     "@writetome51/get-array-from-property": "^2.0.1",
     "@writetome51/arrays-match": "^2.0.1"
+  },
+  "dependencies": {
+    "@writetome51/to-str": ">=0.0.1"
   }
 }
